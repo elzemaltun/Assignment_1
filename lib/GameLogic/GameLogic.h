@@ -7,5 +7,6 @@ bool GameLogic_checkAnswers();
 void GameLogic_updateTime(int difficulty);
 unsigned long GameLogic_getRoundTime();
 int GameLogic_getRandomNumber();
+void GameLogic_resetPlayerAnswer();
 
 #endif
