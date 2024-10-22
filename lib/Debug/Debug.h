@@ -1,7 +1,6 @@
 #ifndef DEBUG_H
 #define DEBUG_H
 
-// Set this to 1 to enable debug output, 0 to disable
 #define DEBUG_ENABLE 1
 
 #if DEBUG_ENABLE

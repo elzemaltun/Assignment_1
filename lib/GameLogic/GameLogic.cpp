@@ -9,13 +9,13 @@ unsigned long roundTime = 10000; // Initial round time: 10 seconds
 
 void GameLogic_init() {
   for (int i = 0; i < 4; i++) {
-    playerAnswer[i] = 0;
+    playerAnswer[i] = 0; // just to be sure
   }
   DEBUG_PRINTLN(F("Game logic initialized"));
 }
 
 void GameLogic_generateRandomNumber() {
-  randomNumber = random(1, 16);
+  randomNumber = random(0, 16); // change to random seed ^
   for (int i = 0; i < 4; i++) {
     correctAnswer[i] = (randomNumber >> (3 - i)) & 1;
   }
@@ -26,7 +26,7 @@ void GameLogic_generateRandomNumber() {
 bool GameLogic_checkAnswers() {
   for (int i = 0; i < 4; i++) {
     if (playerAnswer[i] != correctAnswer[i]) {
-      DEBUG_PRINTLN(F("Incorrect answer"));
+      //DEBUG_PRINTLN(F("Incorrect answer")); will continously loop
       return false;
     }
   }
@@ -47,4 +47,11 @@ unsigned long GameLogic_getRoundTime() {
 
 int GameLogic_getRandomNumber() {
   return randomNumber;
+}
+
+void GameLogic_resetPlayerAnswer() {
+  for (int i = 0; i < 4; i++) {
+    playerAnswer[i] = 0;
+  }
+  DEBUG_PRINTLN(F("Player answer reset"));
 }

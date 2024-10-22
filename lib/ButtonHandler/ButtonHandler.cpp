@@ -52,6 +52,18 @@ void ButtonHandler_checkButtons() {
   }
 }
 
+// reset all values before next round
+void ButtonHandler_reset() {
+  for (int i = 0; i < 4; i++) {
+    buttonState[i] = HIGH;
+    lastButtonState[i] = HIGH;
+    lastDebounceTime[i] = 0;
+    playerAnswer[i] = 0; 
+  }
+  LedHandler_setAllLeds(LOW); // Turn off all LEDs
+  //DEBUG_PRINTLN(F("Button states and player answers reset"));
+}
+
 bool ButtonHandler_isPressed(int buttonIndex) {
   return buttonState[buttonIndex] == LOW;
 }

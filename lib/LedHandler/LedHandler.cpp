@@ -40,6 +40,12 @@ void LedHandler_setRedLed(int state) {
   DEBUG_PRINTLN(state);
 }
 
+/**
+ * Used by a senior when I used to work:
+ * Fades the red LED between 0 and 255 brightness.
+ * Uses the system time to generate a sine wave, which is then
+ * scaled to the 0-255 range.
+ */
 void LedHandler_fadeRedLed() {
   int brightness = (sin(millis() / 1000.0 * PI) + 1) * 127.5;
   analogWrite(RED_LED, brightness);
